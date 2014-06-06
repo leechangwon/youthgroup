@@ -1,0 +1,89 @@
+<!-- html 5 기본 툴 -->
+<!doctype>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>테스트</title>
+<style>
+* {margin: 0px; padding: 0px} /*css 초기화 주석/ 필요 이유.. 초기 마진과 패딩을 초기화 의미*/
+
+#header {margin: 0 auto;height: 150px} /*"margin: 0 auto" 가운데 정렬*/
+#container {background: green}
+#footer {background: blue}
+
+/*.login-action {padding:0px 20px;text-align: right;}*/
+.login {padding:5px 20px;text-align: right;background: gray;}
+
+.header-title {line-height: 120px;padding:0px 20px;text-align: center;width: 800p;background: red;width: 800px;margin: 0 auto}/*'line-height" div 안에서 상하에서 가운데 정렬*/
+.header-menu-box ul {cursor: pointer;}
+.header-menu-box > ul {clear:both; overflow: hidden;}/*'float: left'(흐림)을 종료*/ /* ">"자식에게만 속성 적용*/
+.header-menu-box > ul > li {display:block;float: left; line-height: 30px; width: 25%; text-align: center;} /* ">"자식에게만 속성 적용*/
+.header-menu-box > ul > li:hover {color: #fff; background: #000} /* ">"자식에게만 속성 적용*/
+.header-menu-box > ul > li:hover ul {display: block;}
+
+.header-menu-box > ul > li > ul {position: absolute;display: none;list-style: none;background: #eee;color:#fff;width: 200px;}/*align이 사라지고 절대 위치로 됨*//*display: none; 안보이게*/
+.header-menu-box > ul > li > ul > li {}
+/*
+.header-menu-box ul li:first-child {text-align: left}
+.header-menu-box ul li:last-child {text-align: right}
+*/
+</style>
+</head>
+<body><!-- 화면 안에 내용 -->
+	<!--
+	<div id="login">
+		<div class="login-action">
+			<form method="get" action="/longin">
+				<input type ="text" name="id">
+				<input type ="text" name="password">
+				<button tyep="submit">Login</button>
+			</form>
+		</div>
+	</div>
+	-->
+	<div id="header">
+		<div class="login">
+		    <form method="post" action="index.html">
+		        <input type="text" name="login" value="" placeholder="Username or Email">
+		        <input type="password" name="password" value="" placeholder="Password">
+		        <!--<p class="remember_me">
+		          <label>
+		            <input type="checkbox" name="remember_me" id="remember_me">
+		            Remember me on this computer
+		          </label>
+		        </p>-->
+		        <input type="submit" name="commit" value="Login">
+		    </form>
+		</div>
+		<div class="header-title">
+		<h1>출석체크</h1>
+		</div>
+		<div class="header-menu-box">
+			<ul>
+				<li>
+					청여공
+					<ul>
+						<li><a href="http://www.naver.co.kr" target="_blank">1목장</a></li>
+						<li>2목장</li>
+					</ul>
+				</li>
+				<li>
+					2번 메뉴
+					<ul>
+						<li><a href="http://www.naver.co.kr" target="_blank">네이버이동</a></li>
+						<li>2-2메뉴</li>
+					</ul>
+				</li>
+				<li>3번 메뉴</li>
+				<li>4번 메뉴</li>
+			</ul>
+		</div>
+	</div>
+	<div id="container">
+		container
+	</div>
+	<div id="footer">
+		footer
+	</div>
+</body>
+</html>
