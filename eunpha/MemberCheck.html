@@ -25,8 +25,9 @@
 .contents-member-check li .checkbox {width: 40px}
 .contents-member-check li .delete {width: 100px}
 */
-.contents-right .addMember {background: #333; font-size: 13px;color: #fff;padding: 10px;text-align: center;margin-top: 20px}
+.contents-right .addMember {background: #333; font-size: 13px;color: #fff;padding: 10px;text-align: center;margin-top: 20px;cursor: pointer;}
 </style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <div id="contents">
@@ -46,18 +47,21 @@
 	<div class="contents-right">
 		<table class="contents-member-check">
 			<colgroup>
-				<col width="100">
+				<col width="50">
 				<col width="130">
-				<col width="40">
+				<col width="130">
 				<col width="50">
 				<col width="*">
 			</colgroup>
 			<tbody>
 			<tr>
+				<td>
+					<input type="hidden" name="memNo" value="" />
+					<input type="button" name="deleteMember" class="deleteMember" value="Delete" onclick="deleteMember(this)"/>
+				</td>
 				<td>서시원</td>
 				<td>01029064412</td>
 				<td><input type="checkbox" name="check"/></td>
-				<td><input type="button" name="deleteMember" value="Delete"/></td>
 				<td><input type="text" name="etc"/></td>
 			</tr>
 			</tbody>	
@@ -89,5 +93,27 @@
 </div>
 <div id="">
 </div>
+<script>
+var addMemberHtml = function(){
+	var html = "";
+	html += "<tr>";
+	html += "<td><input type='hidden' name='memNo'/><input type='button' name='deleteMember' class='deleteMember' value='Delete' onclick='deleteMember(this)'></td>";
+	html += "<td><input type='text' name='memNm'/></td>";
+	html += "<td><input type='text' name='memPh'/></td>";
+	html += "<td><input type='checkbox' name='check'/></td>";
+	html += "<td><input type='text' name='etc'/></td>";
+	html += "</tr>";
+	return html;
+}
+$(".addMember").on("click",function(){
+	//console.log("test");
+	var html = addMemberHtml();
+	$(".contents-member-check tbody").append(html);
+})
+var deleteMember = function(liEl){
+	console.log(liEl);
+	$(liEl).parent().parent().remove();
+}
+</script>
 </body>
 </html>
