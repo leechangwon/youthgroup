@@ -22,6 +22,10 @@ function login(request,response,parameter){
 	callHtml("login.ejs", data, response);	
 }
 
+function error(request,response,parameter){
+	callHtml("error.ejs", {}, response);
+}
+
 
 /* return page */
 var callHtml = function (htmlName, dataObj, response) {
@@ -44,21 +48,7 @@ var callHtml = function (htmlName, dataObj, response) {
 	})
 	*/
 }
-/*
-var getParam = function(req){
-	var parameter
-
-	if(req.method == "POST"){
-		console.log("post");
-		//console.log(req);
-		//console.log(req.prototype);
-	}else{
-		var parameter = url.parse(req.url,true).query;
-		
-	}
-	return parameter;
-}
-*/
 
 exports.index = index;
 exports.login = login;
+exports.error = error;

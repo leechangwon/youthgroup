@@ -6,7 +6,7 @@ var qs = require('querystring');
 var urlPath = new Array();
 urlPath["/"] = requestHandlers.index;
 urlPath["/login"] = requestHandlers.login;
-
+urlPath["/error"] = requestHandlers.error;
 
 http.createServer(function (request, response) {
  	var pathname = url.parse(request.url).pathname;
@@ -14,6 +14,14 @@ http.createServer(function (request, response) {
 	/* do something */
 	/*need*/
 	if (pathname != "/favicon.ico") {
+		/* global error page */
+		console.log(pathname);
+		console.log(urlPath[pathname]);
+		if(urlPath[pathname] == null || urlPath[pathname] == undefined ){
+			urlPath["/error"](request,response,parameter);
+			return;
+		}
+		/* do something */
 		if(request.method == "POST"){
 			console.log("method POST");
 			var data = "";
@@ -22,7 +30,6 @@ http.createServer(function (request, response) {
 			});
 			request.on('end', function(postData){
 				var parameter = qs.parse(data);
-				console.log(parameter);
 				urlPath[pathname](request,response,parameter);
 			});
 		} else {
