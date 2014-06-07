@@ -4,21 +4,21 @@ var ejs = require("ejs");
 var url = require("url");
 //var app = express();
 
-function index(request,response){
+function index(request,response,parameter){
 	/* do something */
 	var data = {};
 	data.name = "aa";
 	callHtml("index.ejs", data, response);
 }
 
-function login(request,response){
+function login(request,response,parameter){
 	/* do something */
 	//console.log(request);
 	//var name = request.param("name");
-	var param = getParam(request);
-	console.log(param);
+	//var param = getParam(request);
+	//console.log(param);
 	var data = {};
-	data.name = param.name;
+	data.name = parameter.name;
 	callHtml("login.ejs", data, response);	
 }
 
@@ -44,10 +44,21 @@ var callHtml = function (htmlName, dataObj, response) {
 	})
 	*/
 }
+/*
 var getParam = function(req){
-	var parameter = url.parse(req.url,true).query;
+	var parameter
+
+	if(req.method == "POST"){
+		console.log("post");
+		//console.log(req);
+		//console.log(req.prototype);
+	}else{
+		var parameter = url.parse(req.url,true).query;
+		
+	}
 	return parameter;
 }
+*/
 
 exports.index = index;
 exports.login = login;
