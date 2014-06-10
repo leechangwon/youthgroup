@@ -21,7 +21,7 @@ function login(request,response,parameter){
 	var password = parameter.password;
 	var changePW = enigma.make(password);
 	console.log("changePW :: " + changePW);
-
+	console.log("originalPW :: " + enigma.get(changePW));
 	var data = {};
 	data.name = parameter.name;
 
