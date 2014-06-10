@@ -2,6 +2,7 @@ var fs = require('fs');
 //var express = require("express");
 var ejs = require("ejs");
 var url = require("url");
+var enigma = require("./Action/Utils/enigma");
 //var app = express();
 
 function index(request,response,parameter){
@@ -17,8 +18,13 @@ function login(request,response,parameter){
 	//var name = request.param("name");
 	//var param = getParam(request);
 	//console.log(param);
+	var password = parameter.password;
+	var changePW = enigma.make(password);
+	console.log("changePW :: " + changePW);
+	console.log("originalPW :: " + enigma.get(changePW));
 	var data = {};
 	data.name = parameter.name;
+
 	callHtml("login.ejs", data, response);	
 }
 
