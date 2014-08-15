@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require("url");
 var requestHandlers = require("./requestHandlers");
+//var qs = require("querystring");
 var qs = require('querystring');
 
 var urlPath = new Array();
@@ -12,6 +13,7 @@ http.createServer(function (request, response) {
  	var pathname = url.parse(request.url).pathname;
 	console.log("Request for " + pathname + " received.");
 	/* do something */
+
 	/*need*/
 	if (pathname != "/favicon.ico") {
 		/* global error page */
@@ -39,6 +41,17 @@ http.createServer(function (request, response) {
 		}
 	}
 
+	//callHtml(urlPath[pathname], response);
+	/*
+	if (pathname == "/") {
+
+		callHtml("index.html", response);
+	} else if (pathname == "/login") {
+		callHtml("login.html", response);
+	} else {
+	 			
+	}
+	*/
     //response.writeHead(200, {"Content-Type": "text/plain"});
     //response.end();
 }).listen(8888);

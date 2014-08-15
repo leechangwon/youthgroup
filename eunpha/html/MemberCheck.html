@@ -1,0 +1,119 @@
+<!doctype>
+<html>
+<head>
+<title>출결현황</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+* {margin: 0px;padding: 0px;list-style: none}
+#contents {width: 980px; margin: 0 auto;clear: both;overflow: hidden;}
+.contents-left {float: left;width: 220px;padding: 30px 30px 30px 30px}
+.contents-right {float: left;width: 610px;padding: 10px 0px 0px 30px}
+
+.contents-left {background: #eee}
+.contents-menu li {line-height: 38px;font-size: 13px}
+.contents-menu > li {border-bottom: 1px solid #333;padding-left: 10px}
+.contents-menu > li:first-child {border-top: 1px solid #333}
+.contents-menu > li > ul > li:before {content: '- '}
+.contents-menu > li > ul > li {border-top: 1px dotted #333;line-height: 30px;padding-left: 10px}
+
+.contents-member-check td {text-align: center;}
+/*
+.contents-member-check li {display: block;overflow: hidden;clear: both;}
+.contents-member-check li span {text-align: center;display: inline-block;}
+.contents-member-check li .name {width: 100px}
+.contents-member-check li .phone {width: 120px}
+.contents-member-check li .checkbox {width: 40px}
+.contents-member-check li .delete {width: 100px}
+*/
+.contents-right .addMember {background: #333; font-size: 13px;color: #fff;padding: 10px;text-align: center;margin-top: 20px;cursor: pointer;}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div id="contents">
+	<div class="contents-left">
+		<ul class="contents-menu">
+			<li>청녀공
+				<ul>
+					<li>출결입력</li>
+					<li>출결통계</li>
+				</ul>
+			</li>
+			<li>dddddddddddddd</li>
+			<li>w</li>
+			<li>f</li>
+		</ul>
+	</div>
+	<div class="contents-right">
+		<table class="contents-member-check">
+			<colgroup>
+				<col width="50">
+				<col width="130">
+				<col width="130">
+				<col width="50">
+				<col width="*">
+			</colgroup>
+			<tbody>
+			<tr>
+				<td>
+					<input type="hidden" name="memNo" value="" />
+					<input type="button" name="deleteMember" class="deleteMember" value="Delete" onclick="deleteMember(this)"/>
+				</td>
+				<td>서시원</td>
+				<td>01029064412</td>
+				<td><input type="checkbox" name="check"/></td>
+				<td><input type="text" name="etc"/></td>
+			</tr>
+			</tbody>	
+		</table>
+		<!--
+		<ul>
+			<li>
+				<span class="name">
+					이름
+				</span>
+				<span class="phone">
+					전화번호
+				</span>
+				<span class="checkbox">
+					<input type="checkbox" name="check" />
+				</span>
+				<span class="delete">
+					<input type="button" name="deleteMember" value="Delete"/>
+				</span>
+				<span>
+
+				</span>
+			</li>
+			<li></li>
+		</ul>
+		-->
+		<div class="addMember">ADD Member</div>
+	</div>
+</div>
+<div id="">
+</div>
+<script>
+var addMemberHtml = function(){
+	var html = "";
+	html += "<tr>";
+	html += "<td><input type='hidden' name='memNo'/><input type='button' name='deleteMember' class='deleteMember' value='Delete' onclick='deleteMember(this)'></td>";
+	html += "<td><input type='text' name='memNm'/></td>";
+	html += "<td><input type='text' name='memPh'/></td>";
+	html += "<td><input type='checkbox' name='check'/></td>";
+	html += "<td><input type='text' name='etc'/></td>";
+	html += "</tr>";
+	return html;
+}
+$(".addMember").on("click",function(){
+	//console.log("test");
+	var html = addMemberHtml();
+	$(".contents-member-check tbody").append(html);
+})
+var deleteMember = function(liEl){
+	console.log(liEl);
+	$(liEl).parent().parent().remove();
+}
+</script>
+</body>
+</html>
